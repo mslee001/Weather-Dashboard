@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     //function that gets the rest of the current weather and the daily weather
     function getWeatherOneAPI(a,b) {
-        var queryURL2 = "http://api.openweathermap.org/data/2.5/onecall?lat=" + a + "&lon=" + b + "&exclude=minutely,hourly&appid=aec299195260a001b09706b5bfe740f7&units=imperial";
+        var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + a + "&lon=" + b + "&exclude=minutely,hourly&appid=aec299195260a001b09706b5bfe740f7&units=imperial";
 
         //second API call to get the rest of the current weather data along with the 5 day forecast
         $.ajax({
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
     //function that uses the city user input to make an API call
     function getWeather() {
-        var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=en&appid=aec299195260a001b09706b5bfe740f7";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&lang=en&appid=aec299195260a001b09706b5bfe740f7";
 
         //first API call to get the lat and lon
         $.ajax({
