@@ -1,7 +1,7 @@
 # bootcamp-week6-hw
 06 Server-Side APIs: Weather Dashboard
 
-Link to app: https://mslee001.github.io/bootcamp-week6-hw/
+Link to app: https://mslee001.github.io/Weather-Dashboard/
 
 <img src="screenshots/weather-dash2.PNG">
 
