@@ -22,7 +22,7 @@ $(document).ready(function () {
             //gets the weather icon and appends it the page
             var icon = response.current.weather[0].icon;
             var iconImg = $("<img>");
-            iconImg.attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
+            iconImg.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
             $("#city").append(iconImg);
 
             //if statement to update the background color of the UV Index
