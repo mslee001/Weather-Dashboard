@@ -65,7 +65,7 @@ $(document).ready(function () {
 
                 //adds text to the dynamic elements
                 hDate.text(dailyDate);
-                imgIcon.attr("src", "http://openweathermap.org/img/wn/" + dailyIcon + "@2x.png")
+                imgIcon.attr("src", "https://openweathermap.org/img/wn/" + dailyIcon + "@2x.png")
                 pTemp.text("Temp: " + dailyTemp + "° F");
                 pHum.text("Humidity: " + dailyHum + "%");
 
