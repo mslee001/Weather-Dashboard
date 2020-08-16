@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <title>Weather Dashboard</title>
+    </head>
+    <body>
+        <header class="navbar navbar-dark bg-dark mb-3">
+            <h1 class="display-4 text-light mx-auto">Weather Dashboard</h1>
+        </header>
+        <div class="container-fluid">
+        <sidebar>
+            <div class="card bg-light px-3 float-left" style="width: 32%">
+                <h4>Search for a City:</h4>
+                <form class="form-inline mb-3" id="city-form">
+                    <input class="form-control sm-2" id="city-input" type="search" aria-label="Search">
+                    <button type="button" class="btn btn-primary" type="submit" id="form-submit"><i class="fas fa-search"></i></button>
+                </form>
+                <ul class="list-group mb-3" id="city-list">
+                </ul>
+            </div>
+        </sidebar>
+        <section>
+            <div class="card float-left ml-3 mb-3 p-2" style="width: 66%;">
+                <h2 id="city"></h2>
+                <h5 id="temp"></h5>
+                <h5 id="humidity"></h5>
+                <h5 id="wind"></h5>
+                <h5 id="uv-index">UV Index: <span class="color"></span></h5>
+            </div>
+        </section>
+        <section>
+            <div class="float-right ml-2 mb-3" style="width: 67%;">
+                <h3>5-Day Forecast:</h3>
+                <div class="card-deck">
+                </div>
+            </div>
+        </section>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
