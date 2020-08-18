@@ -1,9 +1,9 @@
-# bootcamp-week6-hw
+# Weather Dashboard
 06 Server-Side APIs: Weather Dashboard
 
 Link to app: https://mslee001.github.io/Weather-Dashboard/
 
-<img src="screenshots/weather-dash2.PNG">
+<img src="screenshots/weather-dash.PNG">
 
 This is a weather dashboard that will allow a user to search for a city and display the weather results.
 
