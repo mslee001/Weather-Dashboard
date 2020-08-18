@@ -22,6 +22,7 @@ $(document).ready(function () {
             //gets the weather icon and appends it the page
             var icon = response.current.weather[0].icon;
             var iconImg = $("<img>");
+            iconImg.addClass("img-fluid");
             iconImg.attr("src", "https://openweathermap.org/img/wn/" + icon + "@2x.png")
             $("#city").append(iconImg);
 
@@ -45,13 +46,16 @@ $(document).ready(function () {
             $("#wind").text("Wind Speed: " + response.current.wind_speed + " MPH");
             $(".color").text(response.current.uvi);
 
+            //displays the html to the user
+            $("#current").css({"display":"block"});
+
             //array for the daily response
             var daily = response.daily;
 
             //for loop to loop through the daily response array
             for (i = 1; i < daily.length - 2; i++) {
                 //saves each response in a variable
-                var dailyDate = moment.unix(daily[i].dt).format("MM/DD/YYYY");
+                var dailyDate = moment.unix(daily[i].dt).format("dddd MM/DD/YYYY");
                 var dailyTemp = daily[i].temp.day;
                 var dailyHum = daily[i].humidity;
                 var dailyIcon = daily[i].weather[0].icon;
@@ -66,6 +70,8 @@ $(document).ready(function () {
                 //adds text to the dynamic elements
                 hDate.text(dailyDate);
                 imgIcon.attr("src", "https://openweathermap.org/img/wn/" + dailyIcon + "@2x.png")
+                imgIcon.addClass("img-fluid");
+                imgIcon.css({"width": "100%"});
                 pTemp.text("Temp: " + dailyTemp + "° F");
                 pHum.text("Humidity: " + dailyHum + "%");
 
@@ -75,6 +81,9 @@ $(document).ready(function () {
                 dailyDiv.append(pTemp);
                 dailyDiv.append(pHum);
                 $(".card-deck").append(dailyDiv);
+
+                //displays this html to the user
+                $("#five-day").css({"display":"block"});
             }
 
         })
@@ -94,8 +103,9 @@ $(document).ready(function () {
             lon = response.coord.lon;
 
             //adds the city name and date to the html for the current weather
-            $("#city").text(response.name + " " + moment.unix(response.dt).format("MM/DD/YYYY"));
-            
+            $("#city").text(response.name);
+            $("#date").text(moment.unix(response.dt).format("dddd, MM/DD/YYYY"));
+                        
             //saves the city name to local storage
             localStorage.setItem("cityname", response.name);
             
@@ -118,11 +128,7 @@ $(document).ready(function () {
         }
     }
 
-    init();
-
-    //submit event for when the users enter the city search term
-    $("#city-form").submit(function (event) {
-        event.preventDefault();
+    function searchButton() {
         cityName = $("input").val().trim();
 
         //buttons are created dynamically as the user enters more cities to search
@@ -136,6 +142,21 @@ $(document).ready(function () {
         $("input").val("");
 
         getWeather();
+    }
+
+    init();
+
+    //submit event for when the users enter the city search term
+    $("#city-form").submit(function (event) {
+        event.preventDefault();
+        searchButton();
+        $(this).closest("p").remove();
+    })
+
+    $("#form-submit").click(function (event) {
+        event.preventDefault();
+        searchButton();
+        $(this).closest("p").remove();
     })
 
     //click event listener for when the user clicks on a city in the history list
@@ -145,5 +166,17 @@ $(document).ready(function () {
 
         getWeather();
     })
+
+    //error handling for when an incorrect city is typed
+    $( document ).ajaxError(function() {
+        var error = $("<p>");
+        error.addClass("error");
+        error.css({"color": "red"});
+        error.text("Please try again with a valid city");
+        $("ul").prepend(error);
+        setTimeout(function () {
+            error.remove();
+            }, 1500);
+      });
 
 })
