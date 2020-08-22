@@ -67,7 +67,7 @@ $(document).ready(function () {
                 var imgIcon = $("<img>");
                 var hDate = $("<h6>");
 
-                //adds text to the dynamic elements
+                //adds text and attributes to the dynamic elements
                 hDate.text(dailyDate);
                 imgIcon.attr("src", "https://openweathermap.org/img/wn/" + dailyIcon + "@2x.png")
                 imgIcon.addClass("img-fluid");
